@@ -6,5 +6,10 @@ from codeforgood import views
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.IndexPage.as_view(), name='index'),
+    path('news/', views.NewsPage.as_view(), name='news'),
+    path('contact/', views.ContactPage.as_view(), name='contact'),
+    path('videos/', views.VideosPage.as_view(), name='videos'),
+    path('careers/', views.CareersPage.as_view(), name='careers'),
+    path('meet_your_hero/', views.HeroPage.as_view(), name='meet_your_hero'),
 ]
