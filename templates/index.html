@@ -6,62 +6,58 @@
 {% endblock %}
 
 {% block main %}
-        <section class="portfolio-block block-intro">
-            <div class="container">
-                <div class="avatar" style="background-image:url({% static 'cat.jpg' %});"></div>
-                <div class="about-me">
-                    <p>Hello! I am <strong>John Smith</strong>. I work as interface and front end developer. I have passion for pixel perfect, minimal and easy to use interfaces.</p><a class="btn btn-outline-primary" role="button" href="#">Hire me</a></div>
+    <style>
+        .dresscode-button {
+            color: #ed6a4c;
+            background-color:transparent;
+            border-color: #ed6a4c;
+        }
+        .dresscode-button:hover {
+            color: #fff;
+            background-color: #f9b123;
+            border-color: #f9b123;
+        }
+        {#h2.text-info {#}
+        {#    color: #1e7e34 !important;#}
+        {#}#}
+    </style>
+    <section class="clean-block features">
+        <div class="container">
+            <div class="text-center margin-top-50 mb-5">
+                <h2 class="text-info">Reasons to get into Computing Science?</h2>
             </div>
-        </section>
-        <section class="portfolio-block photography">
-            <div class="container">
-                <div class="row no-gutters">
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="{% static 'assets/img/nature/image5.jpg' %}"></a></div>
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="{% static 'assets/img/nature/image2.jpg' %}"></a></div>
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="{% static 'assets/img/tech/image4.jpg' %}"></a></div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-5">
+                    <h4>Salary</h4>
+                    <p>The average salary for Computer Science graduates in the UK varies between £42,500 to £72,500.
+                    <a href="https://www.cwjobs.co.uk/salary-checker/average-computer-science-salary">Read more.</a></p>
+                </div>
+                <div class="col-md-5 mb-5">
+                    <h4>Life-time Skills</h4>
+                    <p>Skills like <b>problem solving</b>, <b>critical thinking</b> and <b>team-working</b> are very useful in society.</p>
+                </div>
+                <div class="col-md-5 mb-5">
+                    <h4>Job Oportunities</h4>
+                    <p>Based on LinkedIn there are more than <b>17,000</b> job positions only in the UK. <a href="https://www.linkedin.com/jobs/search/?geoId=101165590&keywords=information%20technology&location=United%20Kingdom">Read more.</a></p>
+                </div>
+                <div class="col-md-5 mb-5">
+                    <h4>Used Everywhere</h4>
+                    <p>Computer Science can be combined with any other profession. Finance, Arts, Biology, Agriculture...</p>
                 </div>
             </div>
-        </section>
-        <section class="portfolio-block call-to-action border-bottom">
-            <div class="container">
-                <div class="d-flex justify-content-center align-items-center content">
-                    <h3>Like what you see?</h3><button class="btn btn-outline-primary btn-lg" type="button">Hire me</button></div>
+        </div>
+    </section>
+    <section class="portfolio-block call-to-action border-bottom">
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center content">
+                <h3>Not convinced?</h3>
+                <a class="btn dresscode-button btn-lg" href="{% url 'meet_your_hero' %}">Click Here</a>
             </div>
-        </section>
-        <section class="portfolio-block skills">
-            <div class="container">
-                <div class="heading">
-                    <h2>Special Skills</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card special-skill-item border-0">
-                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-star-outline"></i></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Web Design</h3>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card special-skill-item border-0">
-                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Interface Design</h3>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card special-skill-item border-0">
-                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-gear-outline"></i></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Photography and Print</h3>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/nKIu9yen5nc" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
 {% endblock %}
