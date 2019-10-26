@@ -98,6 +98,16 @@ select {
 .reduce-size {
     font-size: 80%;
 }
+/*
+Try to make the background photo work later
+.background-image {
+    background-image: url("/static/desktopbackground.jpg");
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+*/
 
 /* --------------------------------------------------- */
 /* FOOTER */
