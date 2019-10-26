@@ -2,15 +2,26 @@
 /* COLOUR PALETTE */
 /* --------------------------------------------------- */
 
-.dresscode-orange { color: #ed6a4c;}
-.dresscode-yellow { color: #f9b123;}
-.dresscode-soft-purple { color: #75529d;}
-.dresscode-deep-purple { color: #a7358c;}
+.dresscode-orange {
+    color: #ed6a4c;
+}
+
+.dresscode-yellow {
+    color: #f9b123;
+}
+
+.dresscode-soft-purple {
+    color: #75529d;
+}
+
+.dresscode-deep-purple {
+    color: #a7358c;
+}
 
 /* --------------------------------------------------- */
 /* BASIC SETUP */
 /* --------------------------------------------------- */
-html, body{
+html, body {
     height: 100%;
 }
 
@@ -28,7 +39,6 @@ body {
     min-height: 100%;
 }
 
-
 /* --------------------------------------------------- */
 /* REUSABLE COMPONENTS */
 /* --------------------------------------------------- */
@@ -41,12 +51,12 @@ h2 {
     color: #212121;
 }
 
-.desktop-block-button { 
-       width: 100%; 
-       display:block;
-       margin-right: 0;
-       margin-top: 0;
-    }
+.desktop-block-button {
+    width: 100%;
+    display: block;
+    margin-right: 0;
+    margin-top: 0;
+}
 
 .desktop-item {
     text-align: left;
@@ -72,7 +82,17 @@ h2 {
 }
 
 .round-edges {
-     border-radius: 20px;
+    border-radius: 20px;
+}
+
+.round-edges-circle {
+    border-radius: 50%;
+}
+
+select {
+    border-radius: 20px;
+    margin: 12px;
+    padding: 8px;
 }
 
 .reduce-size {
@@ -104,23 +124,24 @@ h2 {
 
 /* Maked the menu buttons take      */
 /* full screen width when in mobile */
-@media all and (max-width:580px) {
-   .block-button { 
-       width: 100%; 
-       display: block;
-       margin: 0;
-       margin-top: 15px;
+@media all and (max-width: 580px) {
+    .block-button {
+        width: 100%;
+        display: block;
+        margin: 0;
+        margin-top: 15px;
     }
+
     .item-box-mobile {
         align-self: center;
-        width: 80%; 
-        display:block;
+        width: 80%;
+        display: block;
         margin-left: 10%;
         margin-right: 10%;
         margin-top: 15px;
         text-align: center;
     }
-    
+
     .photo-fit-mobile {
         height: 260px;
         width: 95%;
@@ -128,7 +149,7 @@ h2 {
         vertical-align: middle;
         margin-bottom: 10px;
     }
-    
+
     .text-box-mobile {
         background-color: rgb(247, 247, 247);
         border-radius: 20px;
@@ -136,47 +157,47 @@ h2 {
         width: 90%;
         align-self: center;
     }
-    
+
     .text-center-mobile {
         text-align: center;
     }
-    
+
     .hide-logo-mobile {
         display: none;
     }
 }
-    #scrollBtn {
-      display: none; /* Hidden by default */
-      position: fixed; /* Fixed/sticky position */
-      bottom: 30px; /* Place the button at the bottom of the page */
-      right: 30px; /* Place the button 30px from the right */
-      z-index: 99; /* Make sure it does not overlap */
-      border: none; /* Remove borders */
-      outline: none; /* Remove outline */
-      background-color: rgba(175, 175, 175, 0.8); /* Set a background color */
-      color: #000000; /* Text color */
-      cursor: pointer; /* Add a mouse pointer on hover */
-      padding: 10px 25px; /* Some padding */
-      border-radius: 10px; /* Rounded corners */
-      font-size: 32px; /* Increase font size */
-    }
 
-    #scrollBtn:hover {
-      background-color: rgba(106, 106, 106, 0.77); /* Add a dark-grey background on hover */
-        transition: 1s;
-    }
+#scrollBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 30px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: rgba(175, 175, 175, 0.8); /* Set a background color */
+    color: #000000; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 10px 25px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 32px; /* Increase font size */
+}
 
+#scrollBtn:hover {
+    background-color: rgba(106, 106, 106, 0.77); /* Add a dark-grey background on hover */
+    transition: 1s;
+}
 
 /* --------------------------------------------------- */
 /* DIFFERENT MARGIN/PADDING/WIDTH CLASSES */
 /* --------------------------------------------------- */
 
 .margin-bottom-20 {
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
 .margin-bottom-40 {
-    margin-bottom:40px;
+    margin-bottom: 40px;
 }
 
 .margin-top-bottom-10 {
@@ -194,6 +215,7 @@ h2 {
 .height-100 {
     height: 100px;
 }
+
 .height-150 {
     height: 150px;
 }
@@ -260,9 +282,9 @@ h2 {
         vertical-align: middle;
         margin-bottom: 10px;
     }
-    
+
     .padding-box-80 {
-    padding: 0px 80px;
+        padding: 0px 80px;
     }
 }
 
@@ -272,70 +294,90 @@ h2 {
 
 /* Style the Image Used to Trigger the Modal */
 #myImg {
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-#myImg:hover {opacity: 0.7;}
+#myImg:hover {
+    opacity: 0.7;
+}
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
 }
 
 /* Modal Content (Image) */
 .modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 500px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 500px;
 }
 
 /* Add Animation - Zoom in the Modal */
-.modal-content, #caption { 
-  animation-name: zoom;
-  animation-duration: 0.6s;
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
 }
 
 @keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
 /* The Close Button */
 .close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #434343;
-  font-weight: bold;
-  transition: 0.3s;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #434343;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .close:hover,
 .close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-  .modal-content {
-    width: 100%;
-  }
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
 }
+
 .font-size-inc {
     font-size: 140%;
 }
+
+.dresscode-button {
+    color: #ed6a4c;
+    background-color: transparent;
+    border-color: #ed6a4c;
+}
+
+.dresscode-button:hover {
+    color: #fff;
+    background-color: #f9b123;
+    border-color: #f9b123;
+}
+
