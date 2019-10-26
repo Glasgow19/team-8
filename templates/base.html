@@ -23,7 +23,8 @@ background: linear-gradient(122deg, rgba(117,82,157,1) 0%, rgba(167,53,140,1) 10
      class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar">
     <div class="container">
         <a class="navbar-brand logo" href="#">
-            <img class="w-50" src="{% static 'dressCODE_Final.png' %}">
+            <img class="d-xs-block d-sm-block d-md-none d-lg-none d-xl-none ml-3" style="height: 50px" src="{% static 'dressCODE_mobile.png' %}">
+            <img class="d-none d-sm-none d-md-block d-lg-block d-xl-block w-50" src="{% static 'dressCODE_Final.png' %}">
         </a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
@@ -36,7 +37,7 @@ background: linear-gradient(122deg, rgba(117,82,157,1) 0%, rgba(167,53,140,1) 10
                 <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'meet_your_hero' %}">Role
                     Model</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'videos' %}">Videos</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#">Admin</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'play' %}">Game</a></li>
             </ul>
         </div>
     </div>
@@ -55,7 +56,9 @@ background: linear-gradient(122deg, rgba(117,82,157,1) 0%, rgba(167,53,140,1) 10
                 class="icon ion-social-instagram-outline"></i></a><a href="#"><i
                 class="icon ion-social-twitter"></i></a></div>
     </div>
+    <img src="{% static 'dressCODE_Final_black.png'%}" style="width: 120px; margin: -5px 0px 20px 0px;">
 </footer>
+
 <script src="{% static 'assets/js/jquery.min.js' %}"></script>
 <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
 </body>

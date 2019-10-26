@@ -12,4 +12,5 @@ urlpatterns = [
     path('videos/', views.VideosPage.as_view(), name='videos'),
     path('careers/', views.CareersPage.as_view(), name='careers'),
     path('meet_your_hero/', views.HeroPage.as_view(), name='meet_your_hero'),
+    path('play/', views.PlayPage.as_view(), name='play'),
 ]

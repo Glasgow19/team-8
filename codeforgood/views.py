@@ -87,3 +87,17 @@ class HeroPage(View):
         if form.is_valid():
             context = {'form': form, 'rolemodels': RoleModel.objects.filter(ethnicity=form.cleaned_data["ethnicity"], gender=form.cleaned_data["gender"])}
         return render(request, self.template_name, context=context)
+
+
+class PlayPage(View):
+    template_name = 'Unity_Game/index.html'
+
+    def get(self, request, *args, **kwargs):
+
+        context = {}
+        return render(request, self.template_name, context=context)
+
+    def post(self, request, *args, **kwargs):
+
+        context = {}
+        return render(request, self.template_name, context=context)
