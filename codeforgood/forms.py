@@ -13,6 +13,7 @@ class RoleModelsForm(forms.ModelForm):
     gender_choices = (
         ("Female", ("Female")),
         ("Male", ("Male")),
+        ("Other",("Other")),
     )
 
     ethnicity = forms.ChoiceField(choices=ethnicity_choices)
