@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.views import View
+from .models import NewsArticle
 
 
 class IndexPage(View):
@@ -20,8 +21,8 @@ class NewsPage(View):
     template_name = 'news.html'
 
     def get(self, request, *args, **kwargs):
-
-        context = {}
+        news_articles = NewsArticle.objects.all()
+        context = {"news_articles": news_articles}
         return render(request, self.template_name, context=context)
 
     def post(self, request, *args, **kwargs):

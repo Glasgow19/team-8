@@ -8,14 +8,13 @@
 {% block main %}
     <div class="container margin-top-20">
 
-{#    {% if news_articles %}#}
-{#            {% for news in news_articles|dictsort:sort_by %}#}
+{% if news_articles %}
+           {% for news in news_articles %}
                 <div class="row margin-top-10">
                     <div class="col-md-4">
                         <div class="text-center">
                             <div>
-{#                                <a href="{% url 'show_listing' news.id %}"><img id="myImg" src="{{listing.picture.url}}" class="photo-fit photo-fit-mobile round-edges" alt="item image"></a>#}
-                                <a href="#"><img id="myImg" src="{{news.picture.url}}" class="photo-fit photo-fit-mobile round-edges" alt="item image"></a>
+                                <a href="#"><img id="myImg" src="{% static news.picture.url %}" class="photo-fit photo-fit-mobile round-edges" alt="item image"></a>
                             </div>
                         </div>
                     </div>
@@ -27,13 +26,13 @@
                             <span><strong>Description: </strong>{{news.description}}</span>
                         </div>
                         <div class="row">
-                            <span><strong>Date: </strong>{{news.date.date}}</span>
+                            <span><strong>Date: </strong>{{news.date}}</span>
                         </div>
                     </div>
                 </div>
-{#        {% endfor %}#}
+        {% endfor %}
     </div>
-{#    {% else %}#}
-{#        There no news!#}
-{#    {% endif %}#}
+    {% else %}
+        There no news!
+    {% endif %}
 {% endblock %}
