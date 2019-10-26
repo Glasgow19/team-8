@@ -7,7 +7,7 @@ import django
 
 django.setup()
 
-from codeforgood.models import NewsArticle, VideoArticle, RoleModel
+from codeforgood.models import NewsArticle, VideoArticle, RoleModel, VisitedPagesCounter
 
 
 def populate():
@@ -17,41 +17,47 @@ def populate():
             "picture": "cat.jpg"}
     for i in range(1, 10):
         n = NewsArticle.objects.get_or_create(title=news["title"] + str(i), description=news["description"],
-                                              picture=news["picture"], date=timezone.now())
+                                              picture=news["picture"], date=timezone.now())[0]
+        n.save()
 
     # Videos promoting joining tech
     videos = {"video1": {"title": "Careers in Tech: My name is Tess",
-                         "description": "Meet Tess, a software engineer at Google.", "picture": "careers.jpg",
-                         "url": "https://www.youtube.com/watch?v=RfbbDgx6l1g&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM"},
+                         "description": "Meet Tess, a software engineer at Google.",
+                         "url": "https://www.youtube.com/watch?v=RfbbDgx6l1g&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM",
+                         "views": 20},
               "video2": {"title": "Careers in Tech: My name is Kinsley",
-                         "description": "Meet Kinsley, a software engineer at Facebook.", "picture": "careers.jpg",
-                         "url": "https://www.youtube.com/watch?v=suJZ9z426P0&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM&index=2"},
+                         "description": "Meet Kinsley, a software engineer at Facebook.",
+                         "url": "https://www.youtube.com/watch?v=suJZ9z426P0&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM&index=2",
+                         "views": 20},
               "video3": {"title": "Careers in Tech: My name is Federico",
                          "description": "Meet Federico Gomez Suarez, a software engineer at Microsoft.",
-                         "picture": "careers.jpg",
-                         "url": "https://www.youtube.com/watch?v=EUF2mad21jo&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM&index=3"},
+                         "url": "https://www.youtube.com/watch?v=EUF2mad21jo&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM&index=3",
+                         "views": 20},
               "video4": {"title": "Careers in Tech: My name is Brina",
-                         "description": "Meet Brina Lee, a software engineer at Instagram.", "picture": "careers.jpg",
-                         "url": "https://www.youtube.com/watch?v=t0-Z_LfGwUM&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM&index=4"},
+                         "description": "Meet Brina Lee, a software engineer at Instagram.",
+                         "url": "https://www.youtube.com/watch?v=t0-Z_LfGwUM&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM&index=4",
+                         "views": 20},
               "video5": {"title": "Careers in Tech: My Name is Polina",
-                         "description": "Meet Polina, a data scientist at Electronic Arts.", "picture": "careers.jpg",
-                         "url": ""},
+                         "description": "Meet Polina, a data scientist at Electronic Arts.",
+                         "url": "",
+                         "views": 20},
               "video6": {"title": "What is the Internet?",
                          "description": "What is the internet?  Short answer: a distributed packet-switched network.",
-                         "picture": "internet.jpg",
-                         "url": "https://www.youtube.com/watch?v=Dxcc6ycZ73M&list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7"},
+                         "url": "https://www.youtube.com/watch?v=Dxcc6ycZ73M&list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7",
+                         "views": 20},
               "video7": {"title": "The Internet: How Search Works",
                          "description": "Join John, Google's Chief of Search and AI, and Akshaya, from Microsoft Bing, to find out how search really works.",
-                         "picture": "internet.jpg",
-                         "url": "https://www.youtube.com/watch?v=LVV_93mBfSU&list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7&index=8"},
+                         "url": "https://www.youtube.com/watch?v=LVV_93mBfSU&list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7&index=8",
+                         "views": 20},
               "video8": {"title": "The Internet: Encryption & Public Keys",
                          "description": "Mia Epner, who works on security for a US national intelligence agency, explains how cryptography allows for the secure transfer of data online. ",
-                         "picture": "internet.jpg",
-                         "url": "https://www.youtube.com/watch?v=ZghMPWGXexs&list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7&index=6"}
+                         "url": "https://www.youtube.com/watch?v=ZghMPWGXexs&list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7&index=6",
+                         "views": 20}
               }
     for video in videos:
         v = VideoArticle.objects.get_or_create(title=videos[video]["title"], description=videos[video]["description"],
-                                               picture=videos[video]["picture"], url=videos[video]["url"])
+                                               url=videos[video]["url"], views=videos[video]["views"])[0]
+        v.save()
 
     # Examples of rolemodels in tech
     rolemodels = {"rolemodel1": {"title": "Women Leaders in Tech Law: Sarita Venkat, Apple",
@@ -74,9 +80,9 @@ def populate():
                       "description": "Lyndsey Scott has had a career as an internationally acclaimed model, working for brands such as Victoria's Secret and Gucci, but she has always had a burning passion for computer programming.",
                       "picture": "lyndseyscott.jpg",
                       "url": "https://www.brisbanetimes.com.au/national/western-australia/app-developer-and-former-victoria-s-secret-model-inspires-perth-women-in-tech-20191025-p534cb.html",
-                                 "gender": "Female",
-                                 "ethnicity": "White",
-                                 "position": "Software Developer"},
+                      "gender": "Female",
+                      "ethnicity": "White",
+                      "position": "Software Developer"},
                   "rolemodel4": {"title": "Susan Wojcicki",
                                  "description": "Susan Wojcicki grew up surrounded by Stem: her father was a physics professor at Stanford University and, as a child, she lived on campus with famous mathematicians as neighbours. She joined Google the year after it was founded and has been behind many of the search engine’s most defining features, including creating the first ever Google Doodle. She became head of YouTube last year, after it was bought by Google in 2006.",
                                  "picture": "susanwojcicki.jpeg",
@@ -107,7 +113,17 @@ def populate():
                                             url=rolemodels[rolemodel]["url"],
                                             gender=rolemodels[rolemodel]["gender"],
                                             ethnicity=rolemodels[rolemodel]["ethnicity"],
-                                            position=rolemodels[rolemodel]["position"])
+                                            position=rolemodels[rolemodel]["position"])[0]
+        r.save()
+
+    # Initialize dummy views for each page
+    vpc = VisitedPagesCounter.objects.create(home_views=0,
+                                             careers_views=0,
+                                             contact_views=0,
+                                             meet_your_hero_views=0,
+                                             news_views=0,
+                                             videos_views=0,)
+    vpc.save()
 
 
 if __name__ == '__main__':

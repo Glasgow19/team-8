@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.views import View
-from .models import NewsArticle, RoleModel
+from .models import NewsArticle, RoleModel, VideoArticle
 from .forms import RoleModelsForm
 
 
@@ -50,8 +50,8 @@ class VideosPage(View):
     template_name = 'videos.html'
 
     def get(self, request, *args, **kwargs):
-
-        context = {}
+        videos = VideoArticle.objects.all()
+        context = {"video_articles" : videos}
         return render(request, self.template_name, context=context)
 
     def post(self, request, *args, **kwargs):
