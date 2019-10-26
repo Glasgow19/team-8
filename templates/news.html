@@ -14,16 +14,20 @@
                     <div class="col-md-4">
                         <div class="text-center">
                             <div>
-                                <a href="#"><img id="myImg" src="{% static news.picture.url %}" class="photo-fit photo-fit-mobile round-edges" alt="item image"></a>
+                                <a href="#"><img id="myImg" src="{% static news.picture.url %}" class="height-200 width-200 photo-fit-mobile round-edges" alt="item image"></a>
                             </div>
                         </div>
                     </div>
-                    <div class="text-box text-box-mobile col-md-8">
+                    <div class="text-box text-box-mobile col-md-8 height-200">
                         <div class="row">
                             <span><strong>Title: </strong>{{news.title}}</span>
                         </div>
                         <div class="row">
-                            <span><strong>Description: </strong>{{news.description}}</span>
+                            {% if news.description|length > 440 %}
+                                <span><strong>Description: </strong>{{news.description|slice:"0:440"}}...</span>
+                            {% else %}
+                                <span><strong>Description: </strong>{{news.description}}</span>
+                            {% endif %}
                         </div>
                         <div class="row">
                             <span><strong>Date: </strong>{{news.date}}</span>
