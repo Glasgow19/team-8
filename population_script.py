@@ -8,50 +8,93 @@ import django
 django.setup()
 
 from codeforgood.models import NewsArticle, VideoArticle, RoleModel, VisitedPagesCounter
+from django.contrib.auth.models import User
+
+
+
+def create_superuser(username, password):
+    superuser = User.objects.get_or_create(username=username)[0]
+    superuser.set_password(password)
+    superuser.is_superuser = True
+    superuser.is_staff = True
+    superuser.save()
+    return superuser
 
 
 def populate():
+    # Superuser is used to create the initial categories
+    superuser = create_superuser("admin", "root")
+
     # dummy News articles
-    news = {"title": "News Article ",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "picture": "cat.jpg"}
-    for i in range(1, 10):
-        n = NewsArticle.objects.get_or_create(title=news["title"] + str(i), description=news["description"],
-                                              picture=news["picture"], date=timezone.now())[0]
+    news = {"article1": {"title": "The Week in Tech: Google’s Quantum Leap",
+                         "description": "The company can run esoteric calculations on exotic new hardware faster than is possible on a supercomputer. It’s an achievement of little practical use, but still important.",
+                         "picture": "googlequantum.jpg",
+                         "url": "https://www.nytimes.com/2019/10/25/technology/google-quantum.html",
+                         "views": 20},
+            "article2": {"title": "Monday briefing: The first all-women spacewalk crew has repaired the  ISS",
+                         "description": "Nasa's Christina Koch and Jessica Meir replaced a power control unit and made history, Malicious apps could use Amazon Alexa and Google Home to eavesdrop.",
+                         "picture": "spacewalk.jpg",
+                         "url": "https://www.wired.co.uk/article/wired-awake-211019",
+                         "views": 20},
+            "article3": {"title": "Smart gumshields are monitoring rugby concussions",
+                         "description": "Concussions have become a growing issue in contact sports. New on-field technology is helping to understand the consequences",
+                         "picture": "rugby.jpg",
+                         "url": "https://www.wired.co.uk/article/rugby-concussion-opro-mouthguard",
+                         "views": 20},
+            "article4": {"title": "Migrating eagles racked up a huge cellular bill",
+                         "description": "Migrating eagles with tracking beacons that send texts reportedly accrued roaming charges so high that scientists had to take out a loan to pay for them, as well as attempt to raise money from a crowdfunding campaign — because some of the birds made unexpected detours (via BBC).",
+                         "picture": "eagle.jpg",
+                         "url": "https://www.theverge.com/2019/10/25/20933022/migrating-eagles-scientific-research-major-data-roaming-charges-sms-russia-iran-kazakhstan",
+                         "views": 20},
+            "article5": {"title": "THE STATE OF AI IN 2019",
+                         "description": "It’s a common psychological phenomenon: repeat any word enough times, and it eventually loses all meaning, disintegrating like soggy tissue into phonetic nothingness. For many of us, the phrase “artificial intelligence” fell apart in this way a long time ago. AI is everywhere in tech right now, said to be powering everything from your TV to your toothbrush, but never have the words themselves meant less.",
+                         "picture": "aintel.jpg",
+                         "url": "https://www.theverge.com/2019/1/28/18197520/ai-artificial-intelligence-machine-learning-computational-science",
+                         "views": 20},
+            "article6": {"title": "Samsung announces more powerful Exynos processor",
+                         "description": "Just shy of two months after announcing the Exynos 980, Samsung has announced a new chipset, the Exynos 990. The new processor is built on Samsung’s 7nm process, and includes a Mali-G77 GPU that increases graphical performance or power efficiency compared to Samsung’s previous chip by up to 20 percent as well as an octa-core CPU that should be 20 percent faster.",
+                         "picture": "samsungchip.jpg",
+                         "url": "https://www.theverge.com/2019/10/24/20930060/samsung-exynos-990-chipset-features-specs-performance-cameras-display",
+                         "views": 20}
+            }
+    for article in news:
+        n = NewsArticle.objects.get_or_create(title=news[article]["title"], description=news[article]["description"],
+                                              picture=news[article]["picture"], url=news[article]["url"],
+                                              views=news[article]["views"])[0]
         n.save()
 
     # Videos promoting joining tech
     videos = {"video1": {"title": "Careers in Tech: My name is Tess",
                          "description": "Meet Tess, a software engineer at Google.",
-                         "url": "https://www.youtube.com/watch?v=RfbbDgx6l1g&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM",
+                         "url": "https://www.youtube.com/embed/RfbbDgx6l1g",
                          "views": 20},
               "video2": {"title": "Careers in Tech: My name is Kinsley",
                          "description": "Meet Kinsley, a software engineer at Facebook.",
-                         "url": "https://www.youtube.com/watch?v=suJZ9z426P0&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM&index=2",
+                         "url": "https://www.youtube.com/embed/suJZ9z426P0",
                          "views": 20},
               "video3": {"title": "Careers in Tech: My name is Federico",
                          "description": "Meet Federico Gomez Suarez, a software engineer at Microsoft.",
-                         "url": "https://www.youtube.com/watch?v=EUF2mad21jo&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM&index=3",
+                         "url": "https://www.youtube.com/embed/EUF2mad21jo",
                          "views": 20},
               "video4": {"title": "Careers in Tech: My name is Brina",
                          "description": "Meet Brina Lee, a software engineer at Instagram.",
-                         "url": "https://www.youtube.com/watch?v=t0-Z_LfGwUM&list=PLzdnOPI1iJNfpWMZjEmumqVB09rXAVJRM&index=4",
+                         "url": "https://www.youtube.com/embed/t0-Z_LfGwUM",
                          "views": 20},
               "video5": {"title": "Careers in Tech: My Name is Polina",
                          "description": "Meet Polina, a data scientist at Electronic Arts.",
-                         "url": "",
+                         "url": "https://www.youtube.com/embed/tTSEFaYjV30",
                          "views": 20},
               "video6": {"title": "What is the Internet?",
                          "description": "What is the internet?  Short answer: a distributed packet-switched network.",
-                         "url": "https://www.youtube.com/watch?v=Dxcc6ycZ73M&list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7",
+                         "url": "https://www.youtube.com/embed/Dxcc6ycZ73M",
                          "views": 20},
               "video7": {"title": "The Internet: How Search Works",
                          "description": "Join John, Google's Chief of Search and AI, and Akshaya, from Microsoft Bing, to find out how search really works.",
-                         "url": "https://www.youtube.com/watch?v=LVV_93mBfSU&list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7&index=8",
+                         "url": "https://www.youtube.com/embed/LVV_93mBfSU",
                          "views": 20},
               "video8": {"title": "The Internet: Encryption & Public Keys",
                          "description": "Mia Epner, who works on security for a US national intelligence agency, explains how cryptography allows for the secure transfer of data online. ",
-                         "url": "https://www.youtube.com/watch?v=ZghMPWGXexs&list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7&index=6",
+                         "url": "https://www.youtube.com/embed/ZghMPWGXexs",
                          "views": 20}
               }
     for video in videos:
@@ -117,12 +160,14 @@ def populate():
         r.save()
 
     # Initialize dummy views for each page
-    vpc = VisitedPagesCounter.objects.create(home_views=0,
-                                             careers_views=0,
-                                             contact_views=0,
-                                             meet_your_hero_views=0,
-                                             news_views=0,
-                                             videos_views=0,)
+    vpc = VisitedPagesCounter.objects.get_or_create(pk=0)[0]
+    vpc.home_views = 0
+    vpc.careers_views = 0
+    vpc.contact_views = 0
+    vpc.meet_your_hero_views = 0
+    vpc.news_views = 0
+    vpc.videos_views = 0
+    vpc.play_views = 0
     vpc.save()
 
 
