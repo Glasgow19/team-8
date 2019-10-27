@@ -1,5 +1,5 @@
 from django.contrib import admin
-from codeforgood.models import NewsArticle,RoleModel,VideoArticle,VisitedPagesCounter, FutureSelf
+from .models import NewsArticle,RoleModel,VideoArticle,VisitedPagesCounter, FutureSelfRequest
 
 
 class NewsArticleAdmin(admin.ModelAdmin):
@@ -21,4 +21,4 @@ admin.site.register(NewsArticle, NewsArticleAdmin)
 admin.site.register(RoleModel, RoleModelAdmin)
 admin.site.register(VideoArticle, VideoArticleAdmin)
 admin.site.register(VisitedPagesCounter, VisitedPagesCounterPage)
-admin.site.register(FutureSelf, FutureSelfAdmin)
+admin.site.register(FutureSelfRequest, FutureSelfAdmin)

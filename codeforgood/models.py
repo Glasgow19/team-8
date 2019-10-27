@@ -45,6 +45,6 @@ class VisitedPagesCounter(models.Model):
     future_self_views = models.IntegerField(default=0)
 
 
-class FutureSelf(models.Model):
+class FutureSelfRequest(models.Model):
     story = models.CharField(max_length=350)
     email = models.CharField(max_length=60)

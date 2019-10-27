@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.views import View
-from .models import NewsArticle, RoleModel, VideoArticle, VisitedPagesCounter
+from .models import NewsArticle, RoleModel, VideoArticle, VisitedPagesCounter, FutureSelfRequest
 from .forms import RoleModelsForm, NewsArticleForm, FutureSelfForm
 from django.views.decorators.csrf import csrf_exempt
 
@@ -128,6 +128,20 @@ class PlayPage(View):
         context = {}
         return render(request, self.template_name, context=context)
 
+
+class DisplayFutureSelf(View):
+    template_name = 'display_future.html'
+
+    def get(self, request, *args, **kwargs):
+        f = FutureSelfRequest.objects.all();
+
+        context = {"display_future":f}
+        return render(request, self.template_name, context=context)
+
+    def post(self, request, *args, **kwargs):
+
+        context = {}
+        return render(request, self.template_name, context=context)
 
 class AddNewsArticle(View):
     template_name = 'add_news_article.html'
