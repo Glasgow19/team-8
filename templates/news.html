@@ -15,14 +15,14 @@
 {% if news_articles %}
            {% for news in news_articles %}
                 <div class="row margin-top-10">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="text-center">
                             <div>
-                                <a href="{{ news.url }}"><img onclick="increment_article_view({{ news.pk }})" id="myImg" src="{% static news.picture.url %}" class="height-180 width-180 photo-fit-mobile round-edges news-counter" alt="item image"></a>
+                                <a href="{{ news.url }}"><img onclick="increment_article_view({{ news.pk }})" src="{% static news.picture.url %}" class="height-180 width-180 photo-fit-mobile round-edges news-counter" alt="item image"></a>
                             </div>
                         </div>
                     </div>
-                    <div class="text-box text-box-mobile col-md-8 text-justify">
+                    <div class="text-box text-box-mobile col-md-9 text-justify">
                         <div class="row">
                             <span><strong>Title: </strong>{{news.title}}</span>
                         </div>
