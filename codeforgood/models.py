@@ -43,3 +43,8 @@ class VisitedPagesCounter(models.Model):
     videos_views = models.IntegerField(default=0)
     play_views = models.IntegerField(default=0)
     future_self_views = models.IntegerField(default=0)
+
+
+class FutureSelf(models.Model):
+    story = models.CharField(max_length=350)
+    email = models.CharField(max_length=60)

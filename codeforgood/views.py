@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.views import View
 from .models import NewsArticle, RoleModel, VideoArticle, VisitedPagesCounter
-from .forms import RoleModelsForm, NewsArticleForm
+from .forms import RoleModelsForm, NewsArticleForm, FutureSelfForm
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -71,10 +71,17 @@ class FutureSelf(View):
         return render(request, self.template_name, context={"form": form})
 
     def post(self, request, *args, **kwargs):
-
         context = {}
+        form = FutureSelfForm(request.POST)
+        if form.is_valid():
+            future_self = form.save()
+            future_self.save()
+            context["message"] = "Added future self request succesfully."
+        form = RoleModelsForm(request.POST)
+        context["form"] = form
         return render(request, self.template_name, context=context)
-    
+
+
 class HeroPage(View):
     template_name = 'meet_your_hero.html'
 

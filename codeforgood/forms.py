@@ -1,5 +1,6 @@
 from django import forms
-from .models import RoleModel, NewsArticle
+
+from .models import RoleModel, NewsArticle, FutureSelf
 
 
 class RoleModelsForm(forms.ModelForm):
@@ -31,3 +32,10 @@ class NewsArticleForm(forms.ModelForm):
     class Meta:
         model = NewsArticle
         exclude = ("views", "date")
+
+
+class FutureSelfForm(forms.ModelForm):
+
+    class Meta:
+        model = FutureSelf
+        fields = ('story', 'email')
