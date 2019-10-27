@@ -16,8 +16,8 @@ class RoleModelsForm(forms.ModelForm):
         ("Other",("Other")),
     )
 
-    ethnicity = forms.ChoiceField(choices=ethnicity_choices)
-    gender = forms.ChoiceField(choices=gender_choices)
+    ethnicity = forms.ChoiceField(choices=ethnicity_choices, required=False)
+    gender = forms.ChoiceField(choices=gender_choices, required= False)
 
     class Meta:
         model = RoleModel
