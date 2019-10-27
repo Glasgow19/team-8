@@ -39,6 +39,11 @@ body {
     min-height: 100%;
 }
 
+.purple-gradient {
+    background: rgb(117, 82, 157);
+    background: linear-gradient(122deg, rgba(117, 82, 157, 1) 0%, rgba(167, 53, 140, 1) 100%);
+}
+
 /* --------------------------------------------------- */
 /* REUSABLE COMPONENTS */
 /* --------------------------------------------------- */
