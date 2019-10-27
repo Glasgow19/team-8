@@ -5,16 +5,15 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | JPMC dressCode game 2019</title>
-    <link rel="shortcut icon" href="{% static 'TemplateData/favicon.ico'%}">
+    <link rel="shortcut icon" href="{% static 'TemplateData/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'TemplateData/style.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/styleaddons.css' %}">
     <script src="{% static 'TemplateData/UnityProgress.js' %}"></script>
     <script src="{% static 'Build/UnityLoader.js' %}"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static 'Build/Builds.json' %}", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static 'Build/Build3.json' %}", {onProgress: UnityProgress});
     </script>
 {% endblock %}
+
 {% block main %}
 <div class="game" style="height: 500px">
     <div class="webgl-content">
@@ -25,5 +24,5 @@
         <div class="title">JPMC dressCode game 2019</div>
       </div>
     </div>
-  </div>
+</div>
 {% endblock %}
