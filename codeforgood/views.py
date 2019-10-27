@@ -3,6 +3,8 @@ from django.shortcuts import render, HttpResponse
 from django.views import View
 from .models import NewsArticle, RoleModel, VideoArticle, VisitedPagesCounter
 from .forms import RoleModelsForm
+from django.views.decorators.csrf import csrf_exempt
+
 
 # When a View is called first we increment
 class IndexPage(View):
@@ -121,3 +123,43 @@ def chart_data(request):
 
 def admin_site(request):
     return render(request, 'admin_site.html')
+
+@csrf_exempt
+def IncrementNewsArticleView(request):
+
+    if request.method=="POST":
+        article_pk = request.POST.get("pk")
+        status = False
+
+        try:
+            n = NewsArticle.objects.get(pk=article_pk)
+        except:
+            n = None
+        if n:
+            n.views += 1
+            n.save()
+            status = True
+
+        return JsonResponse({'status': status})
+
+# This method is working as intended, but we were
+# having issues with detecting clicks on youtube embeded
+# videos (iframes). We were not able to call a JS
+# function once we clicked one.
+@csrf_exempt
+def IncrementVideoArticleView(request):
+
+    if request.method=="POST":
+        video_pk = request.POST.get("pk")
+        status = False
+
+        try:
+            v = VideoArticle.objects.get(pk=video_pk)
+        except:
+            v = None
+        if v:
+            v.views += 1
+            v.save()
+            status = True
+
+        return JsonResponse({'status': status})

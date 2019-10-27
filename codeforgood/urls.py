@@ -13,4 +13,6 @@ urlpatterns = [
     path('play/', views.PlayPage.as_view(), name='play'),
     path('admin_site/', views.admin_site, name='admin_site'),
     path('admin_site/data/', views.chart_data, name='chart_data'),
+    path('increment_news_view_count/', views.IncrementNewsArticleView, name="increment_news_views"),
+    path('increment_video_view_count/', views.IncrementVideoArticleView, name="increment_video_views"),
 ]

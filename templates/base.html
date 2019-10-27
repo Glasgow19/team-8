@@ -22,7 +22,7 @@
 background: linear-gradient(122deg, rgba(117,82,157,1) 0%, rgba(167,53,140,1) 100%);"
      class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar">
     <div class="container">
-        <a class="navbar-brand logo" href="#">
+        <a class="navbar-brand logo" href="{% url 'index' %}">
             <img class="d-xs-block d-sm-block d-md-none d-lg-none d-xl-none ml-3" style="height: 50px" src="{% static 'dressCODE_mobile.png' %}">
             <img class="d-none d-sm-none d-md-block d-lg-block d-xl-block w-50" src="{% static 'dressCODE_Final.png' %}">
         </a>
@@ -62,6 +62,7 @@ background: linear-gradient(122deg, rgba(117,82,157,1) 0%, rgba(167,53,140,1) 10
 
 <script src="{% static 'assets/js/jquery.min.js' %}"></script>
 <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/codeforgood.js' %}"></script>
 </body>
 
 </html>
