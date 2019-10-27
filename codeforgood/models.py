@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class NewsArticle(models.Model):
@@ -7,6 +8,7 @@ class NewsArticle(models.Model):
     picture = models.ImageField()
     description = models.CharField(max_length=160)
     views = models.IntegerField()
+    date = models.DateTimeField(default=timezone.now)
 
 
 class RoleModel(models.Model):

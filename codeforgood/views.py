@@ -64,8 +64,8 @@ class VideosPage(View):
         v.videos_views += 1
         v.save()
 
-        videos = VideoArticle.objects.all()
-        context = {"video_articles" : videos}
+        video_articles = VideoArticle.objects.all()
+        context = {"video_articles" : video_articles}
         return render(request, self.template_name, context=context)
 
     def post(self, request, *args, **kwargs):
