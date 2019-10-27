@@ -15,12 +15,28 @@
         <h2 class="text-info dresscode-font">Add a new Article!</h2>
         <h5 class="text-dark mt-4 dresscode-font-italic">(This feature is only available to admins)</h5>
 
+
         {% if form %}
-            <form id="add_news_article" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-                {{ form }}
-             <p class="text-dark mt-4 container"><button type="submit" class="btn btn-success">Submit</button></p>
-            </form>
+            <form id="add_news_article" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group mt-4">
+            <label for="id_story">Enter the title:</label>
+            <input required type="text" class="form-control container" id="id_title" name="title" rows="3">
+        </div>
+                <div class="form-group mt-4">
+            <label for="id_url">Enter the article's URL:</label>
+            <input required type="url" class="form-control container" id="id_url" name="url" rows="3">
+        </div>
+                <div class="form-group mt-4 file-upload">
+            <label for="id_picture">Upload picture:</label>
+            <input required type="file" class="form-control container" id="id_picture" name="picture" rows="3">
+        </div>
+                <div class="form-group mt-4">
+            <label for="id_description">Article text:</label>
+            <textarea required class="form-control container" id="id_description" name="description" rows="3"></textarea>
+        </div>
+        <p class="text-dark mt-4 container"><button type="submit" value="Submit"  class="btn btn-success">Submit</button></p>
+        </form>
+            
         {% endif %}
 
     </div>
