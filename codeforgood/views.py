@@ -150,14 +150,22 @@ def chart_data(request):
 
 def admin_site(request):
     videos = VideoArticle.objects.order_by('-views')[:10]
-    page_views = VisitedPagesCounter.objects.all()[0].videos_views
-    views_ratio = []
+    video_page_views = VisitedPagesCounter.objects.all()[0].videos_views
+    video_views_ratio = []
+
+    news_articles = NewsArticle.objects.order_by('-views')[:10]
+    news_page_views = VisitedPagesCounter.objects.all()[0].news_views
+    news_views_ratio = []
+
+    for article in news_articles:
+        news_views_ratio.append(article.views*100//news_page_views)
 
     for video in videos:
-        views_ratio.append(video.views*100//(page_views))
+        video_views_ratio.append(video.views*100//video_page_views)
 
-    videos = zip(videos,views_ratio)
-    context = {"videos": videos}
+    videos = zip(videos,video_views_ratio)
+    news_articles = zip(news_articles,news_views_ratio)
+    context = {"videos": videos, "news_articles": news_articles}
     return render(request, 'admin_site.html', context)
 
 @csrf_exempt
