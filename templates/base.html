@@ -31,14 +31,11 @@
         <div class="collapse navbar-collapse"
              id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item dresscode-font" role="presentation"><a class="nav-link active" href="{% url 'index' %}">Home</a>
-                </li>
                 <li class="nav-item dresscode-font" role="presentation"><a class="nav-link" href="{% url 'news' %}">News</a></li>
-                <li class="nav-item dresscode-font" role="presentation"><a class="nav-link" href="{% url 'meet_your_hero' %}">Role
-                    Model</a></li>
+                <li class="nav-item dresscode-font" role="presentation"><a class="nav-link" href="{% url 'meet_your_hero' %}">Role Model</a></li>
+                <li class="nav-item dresscode-font" role="presentation"><a class="nav-link" href="{% url 'future_self' %}">Future Self</a></li>
                 <li class="nav-item dresscode-font" role="presentation"><a class="nav-link" href="{% url 'videos' %}">Videos</a></li>
                 <li class="nav-item dresscode-font" role="presentation"><a class="nav-link" href="{% url 'play' %}">Game</a></li>
-                <li class="nav-item dresscode-font" role="presentation"><a class="nav-link" href="{% url 'admin_site' %}">Admin</a></li>
             </ul>
         </div>
     </div>
@@ -50,9 +47,13 @@
 </main>
 <footer class="page-footer bg-light dresscode-font">
     <div class="container">
-        <div class="links"><a href="https://dresscode.org.uk/">About DressCode</a><a
-                href="https://dresscode.org.uk/get-with-the-program/">Contact us</a><a
-                href="https://dresscode.org.uk/what-we-do/">What we do</a></div>
+        <div class="links"><a href="https://dresscode.org.uk/">About DressCode</a>
+            <a href="https://dresscode.org.uk/get-with-the-program/">Contact us</a>
+            <a href="https://dresscode.org.uk/what-we-do/">What we do</a>
+            <a href="{% url 'admin_site' %}">Admin</a>
+        </div>
+        
+        
         <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
                 class="icon ion-social-instagram-outline"></i></a><a href="#"><i
                 class="icon ion-social-twitter"></i></a></div>
