@@ -1,5 +1,5 @@
 from django import forms
-from .models import RoleModel
+from .models import RoleModel, NewsArticle
 
 
 class RoleModelsForm(forms.ModelForm):
@@ -24,3 +24,10 @@ class RoleModelsForm(forms.ModelForm):
     class Meta:
         model = RoleModel
         exclude = ('title', 'picture', 'position','description','url')
+
+
+class NewsArticleForm(forms.ModelForm):
+
+    class Meta:
+        model = NewsArticle
+        exclude = ("views", "date")

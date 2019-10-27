@@ -2,12 +2,15 @@ from django.db import models
 from django.utils import timezone
 
 
+def upload_to(instance, filename):
+    return "%s"%filename
+
 class NewsArticle(models.Model):
     title = models.CharField(max_length=30)
     url = models.CharField(max_length=300)
-    picture = models.ImageField()
+    picture = models.ImageField(upload_to=upload_to, blank=True)
     description = models.CharField(max_length=160)
-    views = models.IntegerField()
+    views = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
 

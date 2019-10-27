@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.views import View
 from .models import NewsArticle, RoleModel, VideoArticle, VisitedPagesCounter
-from .forms import RoleModelsForm
+from .forms import RoleModelsForm, NewsArticleForm
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -119,6 +119,33 @@ class PlayPage(View):
     def post(self, request, *args, **kwargs):
 
         context = {}
+        return render(request, self.template_name, context=context)
+
+
+class AddNewsArticle(View):
+    template_name = 'add_news_article.html'
+    form = NewsArticleForm()
+
+    def get(self, request, *args, **kwargs):
+        context = {"form" : self.form}
+        return render(request, self.template_name, context=context)
+
+    def post(self, request, *args, **kwargs):
+        form = NewsArticleForm(request.POST, request.FILES)
+        context = {"form" : form}
+        if form.is_valid():
+            # Create the new article from the form's input
+            af = form.save(commit=False)
+
+            # We also need to store the uploaded image file
+            if 'image' in request.FILES:
+                af.picture = request.FILES['picture']
+            af.save()
+
+            context["form"] = NewsArticleForm()
+            context["message"] = "Article added successfully."
+        else:
+            print(form)
         return render(request, self.template_name, context=context)
 
 

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Add new article
+{% endblock %}
+
+{% block main %}
+    {% if message %}
+        <div class="row justify-content-center">
+            <div class="btn alert-success mt-0">{{ message }}</div>
+        </div>
+    {% endif %}
+    <div class="text-center margin-top-50 mb-3">
+        <h2 class="text-info dresscode-font">Add a new Article!</h2>
+        <h5 class="text-dark mt-4 dresscode-font-italic">(This feature is only available to admins)</h5>
+
+        {% if form %}
+            <form id="add_news_article" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                {{ form }}
+             <p class="text-dark mt-4 container"><button type="submit" class="btn btn-success">Submit</button></p>
+            </form>
+        {% endif %}
+
+    </div>
+
+<div class="container margin-top-20" style="margin-bottom: 200px"></div>
+
+
+{% endblock %}

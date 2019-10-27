@@ -14,6 +14,7 @@ urlpatterns = [
     path('future_self/', views.FutureSelf.as_view(), name='future_self'),
     path('admin_site/', views.admin_site, name='admin_site'),
     path('admin_site/data/', views.chart_data, name='chart_data'),
+    path('add_news_article/', views.AddNewsArticle.as_view(), name='add_news_article'),
     path('increment_news_view_count/', views.IncrementNewsArticleView, name="increment_news_views"),
     path('increment_video_view_count/', views.IncrementVideoArticleView, name="increment_video_views"),
 ]

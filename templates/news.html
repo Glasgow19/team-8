@@ -18,7 +18,7 @@
                     <div class="col-md-4">
                         <div class="text-center">
                             <div>
-                                <a href="{{ news.url }}"><img onclick="increment_article_view({{ news.pk }})" id="myImg" src="{% static news.picture.url %}" class="height-200 width-200 photo-fit-mobile round-edges news-counter" alt="item image"></a>
+                                <a href="{{ news.url }}"><img onclick="increment_article_view({{ news.pk }})" id="myImg" src="{{ news.picture.url }}" class="height-200 width-200 photo-fit-mobile round-edges news-counter" alt="item image"></a>
                             </div>
                         </div>
                     </div>
