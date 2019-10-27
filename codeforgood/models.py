@@ -12,6 +12,7 @@ class NewsArticle(models.Model):
 
 
 class RoleModel(models.Model):
+    name = models.CharField(max_length=70)
     title = models.CharField(max_length=60)
     picture = models.ImageField()
     gender = models.CharField(max_length=30)

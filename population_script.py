@@ -111,58 +111,51 @@ def populate():
     print("Done!")
 
     # Examples of rolemodels in tech
-    rolemodels = {"rolemodel1": {"title": "Women Leaders in Tech Law: Sarita Venkat, Apple",
+    rolemodels = {"rolemodel1": {"name": "Sarita Venkat",
                                  "description": "Sarita Venkat, who was recently named director of IP transactions at Apple, co-created and co-hosts the “Heels of Justice” podcast, which celebrates other trailblazing women in law. Venkat’s work on the podcast earned her a spot as one of 21 Women Leaders in Tech Law as part of The Recorder’s California Leaders in Tech Law and Innovation Awards.",
                                  "picture": "saritavenkat.jpg",
-                                 "url": "https://www.law.com/therecorder/2019/10/25/women-leaders-in-tech-law-sarita-venkat-apple/?slreturn=20190926143151",
                                  "gender": "Female",
                                  "ethnicity": "White",
                                  "position": "Software Developer"},
 
-                  "rolemodel2": {"title": "Women Leaders in Tech Law: Andrea Lobato, Eaze Technologies",
+                  "rolemodel2": {"name": "Andrea Lobato",
                                  "description": "Andrea Lobato, the chief risk officer of Eaze Technologies and an alum of Lyft’s regulatory compliance program, has helped create the single largest marketplace and tech platform for the legal access to cannabis products in California, if not the entire United States.",
                                  "picture": "lobatoandrea.jpg",
-                                 "url": "https://www.law.com/therecorder/2019/10/26/women-leaders-in-tech-law-andrea-lobato-eaze-technologies/",
                                  "gender": "Female",
                                  "ethnicity": "Mixed",
                                  "position": "Software Developer"},
-                  "rolemodel3": {"title": "App developer and former Victoria's Secret model inspires Perth women in tech",
+                  "rolemodel3": {"name": "Lyndsey Scott",
                                  "description": "Lyndsey Scott has had a career as an internationally acclaimed model, working for brands such as Victoria's Secret and Gucci, but she has always had a burning passion for computer programming.",
                                  "picture": "lyndseyscott.jpg",
-                                 "url": "https://www.brisbanetimes.com.au/national/western-australia/app-developer-and-former-victoria-s-secret-model-inspires-perth-women-in-tech-20191025-p534cb.html",
                                  "gender": "Female",
                                  "ethnicity": "Mixed",
                                  "position": "Software Developer"},
-                  "rolemodel4": {"title": "Susan Wojcicki",
+                  "rolemodel4": {"name":"Susan Wojcicki",
                                  "description": "Susan Wojcicki grew up surrounded by Stem: her father was a physics professor at Stanford University and, as a child, she lived on campus with famous mathematicians as neighbours. She joined Google the year after it was founded and has been behind many of the search engine’s most defining features, including creating the first ever Google Doodle. She became head of YouTube last year, after it was bought by Google in 2006.",
                                  "picture": "susanwojcicki.jpeg",
-                                 "url": "https://www.theguardian.com/guardian-professional/women-leadership-blog/gallery/2015/jun/22/10-of-the-best-female-role-models-in-tech-in-pictures",
                                  "gender": "Female",
                                  "ethnicity": "Mixed",
                                  "position": "Software Developer"},
-                  "rolemodel5": {"title": "Belinda Parmar",
+                  "rolemodel5": {"name": "Belinda Parmar",
                                  "description": "One of the UK’s leading campaigners to get more women into tech, Belinda Parmar is the founder of Little Miss Geek and chief executive of Lady Geek. She was awarded an OBE for services to women in technology in 2014 following campaigns like Her In Hero which brought in support from senior politicians. She has explained her campaigning, saying: “Diversity is important in any industry, but is especially relevant when it comes to technology. Tech is the way that world talks to each other.”",
                                  "picture": "belindaparmar.jpeg",
-                                 "url": "https://www.theguardian.com/guardian-professional/women-leadership-blog/gallery/2015/jun/22/10-of-the-best-female-role-models-in-tech-in-pictures",
                                  "gender": "Female",
                                  "ethnicity": "African",
                                  "position": "Software Developer"},
-                  "rolemodel6": {"title": "Sheryl Sandberg",
+                  "rolemodel6": {"name": "Sheryl Sandberg",
                                  "description": "As chief operating officer of Facebook, Sheryl Sandberg is one of the world’s most high-profile women in the tech sector. After an economics degree and a stint at Google, she was hired by Facebook in 2008 and later became the first woman on the company’s board. She has also been a champion of gender equality – in her book about women in work, Lean In, she writes: “We stand on the shoulders of the women who came before us, women who had to fight for the rights that we now take for granted.”",
                                  "picture": "sherylsandberg.jpg",
-                                 "url": "https://www.theguardian.com/guardian-professional/women-leadership-blog/gallery/2015/jun/22/10-of-the-best-female-role-models-in-tech-in-pictures",
                                  "gender": "Female",
                                  "ethnicity": "African",
                                  "position": "Software Developer"}
                   }
 
     # Create RoleModel records
-    print("Creating dummy RoleModel records... ",end="")
+    print("Creating dummy RoleModel records... ", end="")
     for rolemodel in rolemodels:
-        r = RoleModel.objects.get_or_create(title=rolemodels[rolemodel]["title"],
+        r = RoleModel.objects.get_or_create(name=rolemodels[rolemodel]["name"],
                                             description=rolemodels[rolemodel]["description"],
                                             picture=rolemodels[rolemodel]["picture"],
-                                            url=rolemodels[rolemodel]["url"],
                                             gender=rolemodels[rolemodel]["gender"],
                                             ethnicity=rolemodels[rolemodel]["ethnicity"],
                                             position=rolemodels[rolemodel]["position"])[0]

@@ -23,4 +23,4 @@ class RoleModelsForm(forms.ModelForm):
 
     class Meta:
         model = RoleModel
-        exclude = ('title', 'picture', 'position','description','url')
+        exclude = ('title', 'picture', 'position', 'description', 'url', 'name')
