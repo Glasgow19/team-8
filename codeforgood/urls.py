@@ -17,4 +17,5 @@ urlpatterns = [
     path('add_news_article/', views.AddNewsArticle.as_view(), name='add_news_article'),
     path('increment_news_view_count/', views.IncrementNewsArticleView, name="increment_news_views"),
     path('increment_video_view_count/', views.IncrementVideoArticleView, name="increment_video_views"),
+    path('display_future_self/', views.DisplayFutureSelf.as_view(), name='display_future'),
 ]

@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import RoleModel, NewsArticle, FutureSelf
+from .models import RoleModel, NewsArticle, FutureSelfRequest
 
 
 class RoleModelsForm(forms.ModelForm):
@@ -37,5 +37,5 @@ class NewsArticleForm(forms.ModelForm):
 class FutureSelfForm(forms.ModelForm):
 
     class Meta:
-        model = FutureSelf
+        model = FutureSelfRequest
         fields = ('story', 'email')

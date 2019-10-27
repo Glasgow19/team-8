@@ -7,7 +7,7 @@ import django
 
 django.setup()
 
-from codeforgood.models import NewsArticle, VideoArticle, RoleModel, VisitedPagesCounter
+from codeforgood.models import NewsArticle, VideoArticle, RoleModel, VisitedPagesCounter, FutureSelfRequest
 from django.contrib.auth.models import User
 
 
@@ -160,6 +160,16 @@ def populate():
                                             ethnicity=rolemodels[rolemodel]["ethnicity"],
                                             position=rolemodels[rolemodel]["position"])[0]
         r.save()
+    print("Done!")
+
+    futurerequests = {"email":{"story":"Testing functionality of the page...","email":"testemail@gmail.com"}}
+
+    print("Creating dummy FutureSelf records... ", end="")
+    for i in range(10):
+        story_temp = futurerequests["email"]["story"]
+        email_temp = futurerequests["email"]["email"] + str(i)
+        fr = FutureSelfRequest.objects.get_or_create(email=email_temp,story=story_temp)[0]
+        fr.save()
     print("Done!")
 
     # Initialize dummy views for each page
