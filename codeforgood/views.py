@@ -80,7 +80,7 @@ class HeroPage(View):
 
 
 class PlayPage(View):
-    template_name = 'Unity_Game/index.html'
+    template_name = 'game.html'
 
     def get(self, request, *args, **kwargs):
         v = VisitedPagesCounter.objects.all()[0]  # Since there's only one
@@ -101,17 +101,18 @@ def chart_data(request):
 
     item = VisitedPagesCounter.objects.all()[0]
 
-    dataset = [("home_views",item.home_views+5), ("careers_views",item.careers_views+15),
-               ("videos_views",item.videos_views+25), ("news_views",item.news_views+50), ("hero_views",item.meet_your_hero_views+3)]
+    dataset = [("Careers Views", item.careers_views),
+               ("Videos Views", item.videos_views), ("News Views", item.news_views),
+               ("Hero Views", item.meet_your_hero_views), ("Game Views", item.play_views)]
 
-    print(dataset)
+    total_visits = item.home_views
     views_counter = dict()
     for item in dataset:
         views_counter[item[0]] = item[1]
 
     chart = {
         'chart': {'type': 'pie'},
-        'title': {'text': 'Page visited statistics'},
+        'title': {'text': 'Total Website Visits: ' + str(total_visits)},
         'series': [{
             'name': 'Visits',
             'data': list(map(lambda row: {'name': row[0], 'y': row[1]}, dataset))
@@ -122,7 +123,16 @@ def chart_data(request):
 
 
 def admin_site(request):
-    return render(request, 'admin_site.html')
+    videos = VideoArticle.objects.order_by('-views')[:10]
+    page_views = VisitedPagesCounter.objects.all()[0].videos_views
+    views_ratio = []
+
+    for video in videos:
+        views_ratio.append(video.views*100//(page_views))
+
+    videos = zip(videos,views_ratio)
+    context = {"videos": videos}
+    return render(request, 'admin_site.html', context)
 
 @csrf_exempt
 def IncrementNewsArticleView(request):
