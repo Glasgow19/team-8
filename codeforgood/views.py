@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.views import View
 from .models import NewsArticle, RoleModel, VideoArticle, VisitedPagesCounter
@@ -39,23 +40,6 @@ class NewsPage(View):
         return render(request, self.template_name, context=context)
 
 
-class CareersPage(View):
-    template_name = 'careers.html'
-
-    def get(self, request, *args, **kwargs):
-        v = VisitedPagesCounter.objects.all()[0]  # Since there's only one
-        v.careers_views += 1
-        v.save()
-
-        context = {}
-        return render(request, self.template_name, context=context)
-
-    def post(self, request, *args, **kwargs):
-
-        context = {}
-        return render(request, self.template_name, context=context)
-
-
 class VideosPage(View):
     template_name = 'videos.html'
 
@@ -66,23 +50,6 @@ class VideosPage(View):
 
         video_articles = VideoArticle.objects.all()
         context = {"video_articles" : video_articles}
-        return render(request, self.template_name, context=context)
-
-    def post(self, request, *args, **kwargs):
-
-        context = {}
-        return render(request, self.template_name, context=context)
-
-
-class ContactPage(View):
-    template_name = 'contact.html'
-
-    def get(self, request, *args, **kwargs):
-        v = VisitedPagesCounter.objects.all()[0]  # Since there's only one
-        v.contact_views += 1
-        v.save()
-
-        context = {}
         return render(request, self.template_name, context=context)
 
     def post(self, request, *args, **kwargs):
@@ -125,3 +92,32 @@ class PlayPage(View):
 
         context = {}
         return render(request, self.template_name, context=context)
+
+
+#  PIE CHART
+def chart_data(request):
+
+    item = VisitedPagesCounter.objects.all()[0]
+
+    dataset = [("home_views",item.home_views+5), ("careers_views",item.careers_views+15),
+               ("videos_views",item.videos_views+25), ("news_views",item.news_views+50), ("hero_views",item.meet_your_hero_views+3)]
+
+    print(dataset)
+    views_counter = dict()
+    for item in dataset:
+        views_counter[item[0]] = item[1]
+
+    chart = {
+        'chart': {'type': 'pie'},
+        'title': {'text': 'Page visited statistics'},
+        'series': [{
+            'name': 'Visits',
+            'data': list(map(lambda row: {'name': row[0], 'y': row[1]}, dataset))
+        }]
+    }
+
+    return JsonResponse(chart)
+
+
+def admin_site(request):
+    return render(request, 'admin_site.html')
