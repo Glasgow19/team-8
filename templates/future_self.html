@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Meet your HERO!
+{% endblock %}
+
+{% block main %}
+    <div class="text-center margin-top-50 mb-3">
+        <h2 class="text-info">IT is truly for everyone!</h2>
+        <h5 class="text-dark mt-4">In fact, there is someone just like you excelling in the industry right now.</h5>
+    </div>
+    <form class="text-center" action="" method="post">{% csrf_token %}
+        {{ form.as_table }}
+        <button class="btn dresscode-button" type="submit" value="Submit">Submit</button>
+    </form>
+
+    <div class="container margin-top-20" style="margin-bottom: 200px">
+
+        {% if rolemodels %}
+            {% for rolemodel in rolemodels %}
+                <div class="row margin-top-10">
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <div>
+                                <a href="#"><img src="{% static rolemodel.picture.url %}"
+                                                 class="height-200 width-200 photo-fit-mobile round-edges-circle"
+                                                 alt="item image"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-box text-box-mobile col-md-8 height-200">
+                        <div class="row">
+                            <span><strong>Title: </strong>{{ rolemodel.title }}</span>
+                        </div>
+                        <div class="row">
+                            {% if rolemodel.description|length > 200 %}
+                                <span><strong>Description: </strong>{{ rolemodel.description|slice:"0:200" }}...</span>
+                            {% else %}
+                                <span><strong>Description: </strong>{{ rolemodel.description }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <span><strong>Gender: </strong>{{ rolemodel.gender }}</span>
+                        </div>
+                        <div class="row">
+                            <span><strong>Ethnicity: </strong>{{ rolemodel.ethnicity }}</span>
+                        </div>
+                        <div class="row">
+                            <span><strong>Position: </strong>{{ rolemodel.position }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+{% endblock %}

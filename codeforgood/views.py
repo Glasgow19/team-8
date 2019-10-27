@@ -59,7 +59,22 @@ class VideosPage(View):
         context = {}
         return render(request, self.template_name, context=context)
 
+class FutureSelf(View):
+    template_name = 'future_self.html'
 
+    def get(self, request, *args, **kwargs):
+        v = VisitedPagesCounter.objects.all()[0]  # Since there's only one
+        v.future_self_views += 1
+        v.save()
+
+        form = RoleModelsForm(request.POST)
+        return render(request, self.template_name, context={"form": form})
+
+    def post(self, request, *args, **kwargs):
+
+        context = {}
+        return render(request, self.template_name, context=context)
+    
 class HeroPage(View):
     template_name = 'meet_your_hero.html'
 

@@ -38,3 +38,4 @@ class VisitedPagesCounter(models.Model):
     news_views = models.IntegerField(default=0)
     videos_views = models.IntegerField(default=0)
     play_views = models.IntegerField(default=0)
+    future_self_views = models.IntegerField(default=0)

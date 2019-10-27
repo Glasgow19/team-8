@@ -178,6 +178,7 @@ def populate():
     vpc.news_views = 671
     vpc.videos_views = 702
     vpc.play_views = 321
+    vpc.future_self_views = 156
     vpc.save()
     print("Done!")
 
