@@ -29,24 +29,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-box text-box-mobile col-md-8 height-200">
-                        <div class="row">
+                    <div class="text-box text-box-mobile col-md-8 text-justify">
+                        <div>
                             <span><strong>Name: </strong>{{ rolemodel.name }}</span>
                         </div>
-                        <div class="row">
-                            {% if rolemodel.description|length > 200 %}
-                                <span><strong>Description: </strong>{{ rolemodel.description|slice:"0:200" }}...</span>
+                        <div>
+                            {% if rolemodel.description|length > 230 %}
+                                <span><strong>Description: </strong>{{ rolemodel.description|slice:"0:230" }}...</span>
                             {% else %}
                                 <span><strong>Description: </strong>{{ rolemodel.description }}</span>
                             {% endif %}
                         </div>
-                        <div class="row">
+                        <div>
                             <span><strong>Gender: </strong>{{ rolemodel.gender }}</span>
                         </div>
-                        <div class="row">
+                        <div>
                             <span><strong>Ethnicity: </strong>{{ rolemodel.ethnicity }}</span>
                         </div>
-                        <div class="row">
+                        <div>
                             <span><strong>Position: </strong>{{ rolemodel.position }}</span>
                         </div>
                     </div>

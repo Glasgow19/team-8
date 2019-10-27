@@ -256,6 +256,10 @@ Try to make the background photo work later
     height: 150px;
 }
 
+.height-180 {
+    height: 180px;
+}
+
 .height-200 {
     height: 200px;
 }
@@ -298,6 +302,10 @@ Try to make the background photo work later
 
 .width-150 {
     width: 150px;
+}
+
+.width-180 {
+    width: 180px;
 }
 
 .width-240 {

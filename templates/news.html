@@ -18,17 +18,17 @@
                     <div class="col-md-4">
                         <div class="text-center">
                             <div>
-                                <a href="{{ news.url }}"><img onclick="increment_article_view({{ news.pk }})" id="myImg" src="{% static news.picture.url %}" class="height-200 width-200 photo-fit-mobile round-edges news-counter" alt="item image"></a>
+                                <a href="{{ news.url }}"><img onclick="increment_article_view({{ news.pk }})" id="myImg" src="{% static news.picture.url %}" class="height-180 width-180 photo-fit-mobile round-edges news-counter" alt="item image"></a>
                             </div>
                         </div>
                     </div>
-                    <div class="text-box text-box-mobile col-md-8 height-200">
+                    <div class="text-box text-box-mobile col-md-8 text-justify">
                         <div class="row">
                             <span><strong>Title: </strong>{{news.title}}</span>
                         </div>
                         <div class="row">
-                            {% if news.description|length > 440 %}
-                                <span><strong>Description: </strong>{{news.description|slice:"0:440"}}...</span>
+                            {% if news.description|length > 320 %}
+                                <span><strong>Description: </strong>{{news.description|slice:"0:320"}}...</span>
                             {% else %}
                                 <span><strong>Description: </strong>{{news.description}}</span>
                             {% endif %}
