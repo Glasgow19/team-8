@@ -10,10 +10,15 @@
         <h2 class="text-info dresscode-font">Ask your future self!</h2>
         <h5 class="text-dark mt-4 dresscode-font-italic">Tell us a bit more about you, where you come from, your tech aspirations and what do you look forward to in the future.</h5>
         <h5 class="text-dark mt-4 container">We will then match you with one of our experts from our network that has had a similar upbringing as you. You will then be able to ask them questions, learn about their story and use it as a blueprint to create yours!</h5>
-        <p class="text-dark mt-4 container">Share your story here:</p>
-        <p class="text-dark mt-4 container"><textarea name="aboutperson" cols="60" rows="5"></textarea></p>
-        <p class="text-dark mt-4 container">Email Address:</p>
-        <p class="text-dark mt-4 container"><input type="email" name="emailaddress"></p>
+        <div class="form-group mt-4">
+            <label for="exampleFormControlTextarea1">Share your story here:</label>
+            <textarea class="form-control container" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address:</label>
+            <input type="email" class="form-control container" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
         <p class="text-dark mt-4 container"><button type="button" class="btn btn-success">Submit</button></p>
         
         
