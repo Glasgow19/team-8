@@ -19,6 +19,27 @@
 }
 
 /* --------------------------------------------------- */
+/* FONT FAMILY */
+/* --------------------------------------------------- */
+@font-face {
+  font-family: Carbon;
+  src: url(/static/assets/fonts/Carbon.otf);
+}
+
+@font-face {
+  font-family: Carbon-italic;
+  src: url(/static/assets/fonts/Carbon_Italic.otf);
+}
+
+.dresscode-font {
+    font-family: Carbon, sans-serif;
+}
+
+.dresscode-font-italic {
+    font-family: Carbon-italic, sans-serif;
+}
+
+/* --------------------------------------------------- */
 /* BASIC SETUP */
 /* --------------------------------------------------- */
 html, body {

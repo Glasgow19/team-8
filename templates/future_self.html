@@ -7,12 +7,12 @@
 
 {% block main %}
     <div class="text-center margin-top-50 mb-3">
-        <h2 class="text-info dresscode-font">IT is truly for everyone!</h2>
-        <h5 class="text-dark mt-4 dresscode-font-italic">In fact, there is someone just like you excelling in the industry right now.</h5>
+        <h2 class="text-info">IT is truly for everyone!</h2>
+        <h5 class="text-dark mt-4">In fact, there is someone just like you excelling in the industry right now.</h5>
     </div>
     <form class="text-center" action="" method="post">{% csrf_token %}
         {{ form.as_table }}
-        <button class="btn dresscode-button dresscode-font-italic" type="submit" value="Submit">Submit</button>
+        <button class="btn dresscode-button" type="submit" value="Submit">Submit</button>
     </form>
 
     <div class="container margin-top-20" style="margin-bottom: 200px">
