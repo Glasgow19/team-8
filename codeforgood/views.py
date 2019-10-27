@@ -87,10 +87,21 @@ class HeroPage(View):
         return render(request, self.template_name, context={"form": form})
 
     def post(self, request, *args, **kwargs):
-        context = {'rolemodels': {}}
+        context = {}
+        rolemodels = []
         form = RoleModelsForm(request.POST)
         if form.is_valid():
-            context = {'form': form, 'rolemodels': RoleModel.objects.filter(ethnicity=form.cleaned_data["ethnicity"], gender=form.cleaned_data["gender"])}
+            if form.cleaned_data["ethnicity"]=="All" and form.cleaned_data["gender"]=="All":
+                rolemodels = RoleModel.objects.all()
+            elif form.cleaned_data["ethnicity"]=="All":
+                rolemodels = RoleModel.objects.filter(gender=form.cleaned_data["gender"])
+            elif form.cleaned_data["gender"]=="All":
+                rolemodels = RoleModel.objects.filter(ethnicity=form.cleaned_data["ethnicity"])
+            else:
+                rolemodels = RoleModel.objects.filter(ethnicity=form.cleaned_data["ethnicity"],
+                                                      gender=form.cleaned_data["gender"])
+
+        context = {'form': form, 'rolemodels': rolemodels}
         return render(request, self.template_name, context=context)
 
 
